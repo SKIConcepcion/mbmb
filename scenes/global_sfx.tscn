@@ -1,0 +1,95 @@
+[gd_scene load_steps=20 format=3 uid="uid://bryr1dx2e5ht6"]
+
+[ext_resource type="AudioStream" uid="uid://mvm160wo162e" path="res://assets/sfxs/door-lock-43124.mp3" id="1_776yn"]
+[ext_resource type="Script" uid="uid://cpr2hp8e6jmht" path="res://scripts/global_sfx.gd" id="1_lgu8u"]
+[ext_resource type="AudioStream" uid="uid://4gpu5d4jyyge" path="res://assets/sfxs/door-open-close-45475.mp3" id="2_cdq3m"]
+[ext_resource type="AudioStream" uid="uid://dsdojpt2y3u37" path="res://assets/sfxs/boxcrunch-01-94664.mp3" id="4_uxr5k"]
+[ext_resource type="AudioStream" uid="uid://cu3hk32j4gvpu" path="res://assets/sfxs/rattle-85837.mp3" id="5_uxr5k"]
+[ext_resource type="AudioStream" uid="uid://5jaw0x8021fv" path="res://assets/sfxs/086374_shaken-bush-40116.mp3" id="6_0l4wi"]
+[ext_resource type="AudioStream" uid="uid://5wpndxpgwnbj" path="res://assets/sfxs/light-switch-81967.mp3" id="7_iaaci"]
+[ext_resource type="AudioStream" uid="uid://vb7aeix5jllb" path="res://assets/sfxs/old-radio-button-click-97549 (1).mp3" id="8_iaaci"]
+[ext_resource type="AudioStream" uid="uid://bdaprnwfmr6tg" path="res://assets/sfxs/clothes-drop-2-40202.mp3" id="9_l6svp"]
+[ext_resource type="AudioStream" uid="uid://bdbtcl43uk3mn" path="res://assets/sfxs/stairs-slowly-27436-[Trimmed by Rev.com] (3).mp3" id="10_ys8o4"]
+[ext_resource type="AudioStream" uid="uid://chd13ywhvtdv2" path="res://assets/sfxs/pill-bottles-open-pour-out-close_louder-40932 (mp3cut.net).mp3" id="11_lsi6b"]
+[ext_resource type="AudioStream" uid="uid://bia4sfvc6y32p" path="res://assets/sfxs/conveniencestorering-96090.mp3" id="12_dx25e"]
+[ext_resource type="AudioStream" uid="uid://cqkq7fs3a6b3g" path="res://assets/sfxs/door-open-107728.mp3" id="12_lsi6b"]
+[ext_resource type="AudioStream" uid="uid://cq20wwb70qqmn" path="res://assets/sfxs/hmms-various-1-7175 (mp3cut.net) (1).mp3" id="14_xrj4r"]
+[ext_resource type="AudioStream" uid="uid://bmoiweadqtmto" path="res://assets/sfxs/cash-register-fake-88639.mp3" id="15_0blr3"]
+[ext_resource type="AudioStream" uid="uid://uis3tchqt6s3" path="res://assets/sfxs/music-box-34179.mp3" id="16_psbsc"]
+[ext_resource type="AudioStream" uid="uid://jkqn0syq1e3b" path="res://assets/sfxs/item-pickup-37089 (1).mp3" id="16_rk1qj"]
+[ext_resource type="AudioStream" uid="uid://upeokrnuwo7b" path="res://assets/sfxs/fridge-close-80052 (mp3cut.net).mp3" id="17_0blr3"]
+[ext_resource type="AudioStream" uid="uid://d322p1wxbsvwu" path="res://assets/sfxs/flip-page-105778.mp3" id="17_rk1qj"]
+
+[node name="GlobalSfx" type="Node"]
+script = ExtResource("1_lgu8u")
+
+[node name="Door" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_cdq3m")
+pitch_scale = 0.8
+
+[node name="DoorLock" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_776yn")
+volume_db = 2.0
+pitch_scale = 0.8
+
+[node name="BoxCrunch" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_uxr5k")
+pitch_scale = 0.8
+
+[node name="Cabinet" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_uxr5k")
+pitch_scale = 0.85
+
+[node name="Bush" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_0l4wi")
+
+[node name="LightSwitch" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_iaaci")
+
+[node name="ButtonClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_iaaci")
+pitch_scale = 0.8
+
+[node name="Blanket" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_l6svp")
+
+[node name="Stairs" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_ys8o4")
+volume_db = 5.0
+pitch_scale = 0.8
+
+[node name="Pills" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_lsi6b")
+volume_db = 3.0
+
+[node name="ConvDoor" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_lsi6b")
+
+[node name="ConvMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_dx25e")
+volume_db = -15.0
+pitch_scale = 0.9
+
+[node name="Hm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_xrj4r")
+volume_db = -12.0
+pitch_scale = 1.25
+
+[node name="CashRegister" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_0blr3")
+volume_db = -10.0
+
+[node name="MusicBox" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_psbsc")
+pitch_scale = 0.75
+
+[node name="Pickup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_rk1qj")
+volume_db = -8.0
+
+[node name="Paper" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_rk1qj")
+volume_db = -3.0
+
+[node name="Fridge" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_0blr3")

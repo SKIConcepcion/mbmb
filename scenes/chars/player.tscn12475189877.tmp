@@ -1,0 +1,214 @@
+[gd_scene load_steps=29 format=3 uid="uid://dkoabgga4m8lb"]
+
+[ext_resource type="Texture2D" uid="uid://cqu32bovsexy7" path="res://assets/images/player/player_01.png" id="1_adwjk"]
+[ext_resource type="Script" uid="uid://otx3k3tuatvr" path="res://scripts/player.gd" id="1_wyvug"]
+[ext_resource type="Texture2D" uid="uid://tce44wrgeblo" path="res://assets/images/player/player_02.png" id="2_wyvug"]
+[ext_resource type="Texture2D" uid="uid://uc2n2bxtc8wb" path="res://assets/images/light.png" id="2_x1lki"]
+[ext_resource type="Texture2D" uid="uid://d3mmdclcmiskm" path="res://assets/images/player/player_03.png" id="4_r04vw"]
+[ext_resource type="Texture2D" uid="uid://dyyda7yqkks2g" path="res://assets/images/player/player_04.png" id="5_4yrg8"]
+[ext_resource type="Texture2D" uid="uid://bfofel4cxviro" path="res://assets/images/player/player_05.png" id="6_xv662"]
+[ext_resource type="Texture2D" uid="uid://svcfiv6f0ah8" path="res://assets/images/player/player_06.png" id="7_rqvr5"]
+[ext_resource type="Script" uid="uid://viv2er6o3ug0" path="res://scripts/film_grain.gd" id="8_qduv4"]
+[ext_resource type="AudioStream" uid="uid://bdkkf3oodkbpp" path="res://assets/sfxs/walking-on-a-wooden-floor-32056.mp3" id="8_rqvr5"]
+[ext_resource type="Texture2D" uid="uid://c75gty7hbq5v7" path="res://assets/images/food.png" id="9_yn5eq"]
+[ext_resource type="Texture2D" uid="uid://cmq0ws43u5m41" path="res://assets/images/buttons/left_btn.png" id="10_gwd0n"]
+[ext_resource type="Texture2D" uid="uid://cajmhnmeqg8md" path="res://assets/images/house_key.png" id="10_qhd6n"]
+[ext_resource type="AudioStream" uid="uid://bjtxki5por1hv" path="res://assets/sfxs/finger-snap-97530.mp3" id="11_3ud1y"]
+[ext_resource type="Texture2D" uid="uid://c5tafnu0h5scn" path="res://assets/images/buttons/left_btn_pressed.png" id="11_l1atu"]
+[ext_resource type="Texture2D" uid="uid://ddby37iim5rmc" path="res://assets/images/buttons/right_btn.png" id="12_0t2q0"]
+[ext_resource type="Texture2D" uid="uid://bgjku0lsod2t6" path="res://assets/images/buttons/right_btn_pressed.png" id="13_fa76y"]
+[ext_resource type="Texture2D" uid="uid://54nwed7y52uj" path="res://assets/images/buttons/light_btn.png" id="14_xiox7"]
+[ext_resource type="Texture2D" uid="uid://d1ue3c2pfv5u2" path="res://assets/images/buttons/light_btn_pressed.png" id="15_h2d8x"]
+[ext_resource type="Texture2D" uid="uid://b6wemytdpn7av" path="res://assets/images/buttons/interact_btn.png" id="16_kxg1g"]
+[ext_resource type="Texture2D" uid="uid://bhdy818x6boq" path="res://assets/images/buttons/interact_btn_pressed.png" id="17_j2cyx"]
+[ext_resource type="Texture2D" uid="uid://dmi3h8a6t4mc1" path="res://assets/images/buttons/pill_btn.png" id="18_tpud4"]
+[ext_resource type="Texture2D" uid="uid://dlsmu0mfucb4d" path="res://assets/images/buttons/pill_btn_pressed.png" id="19_chn5q"]
+[ext_resource type="FontFile" uid="uid://dm4qb644wjjgu" path="res://assets/quicksand.ttf" id="20_chn5q"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t25bx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_adwjk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_wyvug")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_adwjk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_r04vw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4yrg8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_adwjk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xv662")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_rqvr5")
+}],
+"loop": true,
+"name": &"moving",
+"speed": 6.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_adwjk"]
+radius = 60.0
+height = 292.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_3ud1y"]
+seed = 7
+frequency = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_x1lki"]
+noise = SubResource("FastNoiseLite_3ud1y")
+
+[node name="Player" type="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_wyvug")
+
+[node name="GlowstickLight" type="PointLight2D" parent="."]
+position = Vector2(2, -90)
+scale = Vector2(1.6, 1.6)
+energy = 0.0
+texture = ExtResource("2_x1lki")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(6, -39)
+sprite_frames = SubResource("SpriteFrames_t25bx")
+animation = &"moving"
+autoplay = "idle"
+frame_progress = 0.0455277
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-8, 0)
+shape = SubResource("CapsuleShape2D_adwjk")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Items" type="Node" parent="CanvasLayer"]
+
+[node name="FoodItem" type="Sprite2D" parent="CanvasLayer/Items"]
+z_index = 1
+position = Vector2(1112, 44)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("9_yn5eq")
+
+[node name="HouseKeyItem" type="Sprite2D" parent="CanvasLayer/Items"]
+z_index = 1
+position = Vector2(1053, 41.00004)
+rotation = 0.43633232
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("10_qhd6n")
+
+[node name="TopBorder" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1152.0
+offset_bottom = 88.0
+color = Color(0, 0, 0, 1)
+
+[node name="BottomBorder" type="ColorRect" parent="CanvasLayer"]
+offset_top = 528.0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="FilmGrain" type="TextureRect" parent="CanvasLayer"]
+modulate = Color(0.470588, 0.470588, 0.470588, 0.196078)
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = SubResource("NoiseTexture2D_x1lki")
+script = ExtResource("8_qduv4")
+
+[node name="PlayerDarkness" type="ColorRect" parent="CanvasLayer" groups=["Player"]]
+visible = false
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="Dialogue" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -552.0
+offset_top = -300.0
+offset_right = 552.0
+offset_bottom = -260.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.9019608)
+theme_override_fonts/font = ExtResource("20_chn5q")
+theme_override_font_sizes/font_size = 26
+vertical_alignment = 1
+
+[node name="ButtonLayer" type="CanvasLayer" parent="."]
+
+[node name="LeftButton" type="TextureButton" parent="ButtonLayer"]
+offset_left = 24.0
+offset_top = 544.0
+offset_right = 114.0
+offset_bottom = 634.0
+texture_normal = ExtResource("10_gwd0n")
+texture_pressed = ExtResource("11_l1atu")
+
+[node name="RightButton" type="TextureButton" parent="ButtonLayer"]
+offset_left = 136.0
+offset_top = 544.0
+offset_right = 226.0
+offset_bottom = 634.0
+texture_normal = ExtResource("12_0t2q0")
+texture_pressed = ExtResource("13_fa76y")
+
+[node name="LightButton" type="TextureButton" parent="ButtonLayer"]
+offset_left = 1040.0
+offset_top = 544.0
+offset_right = 1130.0
+offset_bottom = 634.0
+texture_normal = ExtResource("14_xiox7")
+texture_pressed = ExtResource("15_h2d8x")
+
+[node name="InteractButton" type="TextureButton" parent="ButtonLayer"]
+offset_left = 944.0
+offset_top = 544.0
+offset_right = 1034.0
+offset_bottom = 634.0
+texture_normal = ExtResource("16_kxg1g")
+texture_pressed = ExtResource("17_j2cyx")
+
+[node name="PillButton" type="TextureButton" parent="ButtonLayer"]
+offset_left = 816.0
+offset_top = 544.0
+offset_right = 936.0
+offset_bottom = 634.0
+texture_normal = ExtResource("18_tpud4")
+texture_pressed = ExtResource("19_chn5q")
+
+[node name="Label" type="Label" parent="ButtonLayer/PillButton"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 45.0
+offset_right = 101.0
+offset_bottom = 80.0
+theme_override_fonts/font = ExtResource("20_chn5q")
+theme_override_font_sizes/font_size = 24
+text = "10"
+horizontal_alignment = 1
+
+[node name="WalkingSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_rqvr5")
+pitch_scale = 1.15
+
+[node name="GlowstickSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_3ud1y")
+volume_db = -10.0

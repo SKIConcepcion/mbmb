@@ -1,0 +1,89 @@
+[gd_scene load_steps=19 format=3 uid="uid://b6lq8cq24br7h"]
+
+[ext_resource type="Script" uid="uid://cii7ktasjw5pe" path="res://scripts/interact_prompt.gd" id="1_ate77"]
+[ext_resource type="Texture2D" uid="uid://cwlbru2d7bp2c" path="res://assets/images/prompt.png" id="2_xim6e"]
+[ext_resource type="Texture2D" uid="uid://ckemlj43mxrkq" path="res://assets/images/prompt/prompt_lock.png" id="3_cc80c"]
+[ext_resource type="Texture2D" uid="uid://bhudlpr83t2r5" path="res://assets/images/prompt/prompt_unlock.png" id="4_j52en"]
+[ext_resource type="Texture2D" uid="uid://cjeedss243fy8" path="res://assets/images/prompt/prompt_enter.png" id="5_j52en"]
+[ext_resource type="Texture2D" uid="uid://c831yu6rkrg46" path="res://assets/images/prompt/prompt_sleep.png" id="6_bop7d"]
+[ext_resource type="Texture2D" uid="uid://cuvtk4yjbq02t" path="res://assets/images/prompt/prompt_feed.png" id="7_s8op5"]
+[ext_resource type="Texture2D" uid="uid://cp10cv8xdul5e" path="res://assets/images/prompt/prompt_hide.png" id="8_s8op5"]
+[ext_resource type="Texture2D" uid="uid://3b4im6bbtmny" path="res://assets/images/prompt/prompt_enter_unable.png" id="9_a8lc3"]
+[ext_resource type="Texture2D" uid="uid://div00eh8y48wc" path="res://assets/images/prompt/prompt_light.png" id="10_db5qs"]
+[ext_resource type="Texture2D" uid="uid://bupjqn1r4gsb6" path="res://assets/images/prompt/prompy_turn.png" id="11_stm08"]
+[ext_resource type="Texture2D" uid="uid://cwp42bonwkfgk" path="res://assets/images/prompt/prompt_down.png" id="12_ct6jh"]
+[ext_resource type="Texture2D" uid="uid://dh6ud5pwwa60y" path="res://assets/images/prompt/prompt_up.png" id="13_2np61"]
+[ext_resource type="Texture2D" uid="uid://y0po72gq8skd" path="res://assets/images/prompt/interact_prompt.png" id="14_2np61"]
+[ext_resource type="Texture2D" uid="uid://kj2dt4iyo51m" path="res://assets/images/prompt/prompt_key.png" id="15_wpc1t"]
+[ext_resource type="Texture2D" uid="uid://cmfsb6cle4ydk" path="res://assets/images/prompt/prompt_key_item.png" id="16_wnklb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xim6e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xim6e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_cc80c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_j52en")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_j52en")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bop7d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_s8op5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_s8op5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_a8lc3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_db5qs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_stm08")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ct6jh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_2np61")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_2np61")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_wpc1t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_wnklb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xim6e"]
+
+[node name="InteractPrompt" type="Node2D"]
+script = ExtResource("1_ate77")
+
+[node name="Prompt" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.784314)
+position = Vector2(0, -147)
+sprite_frames = SubResource("SpriteFrames_xim6e")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_xim6e")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

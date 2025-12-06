@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://vb7aeix5jllb"
+path="res://.godot/imported/old-radio-button-click-97549 (1).mp3-748da0de3e2b7d9650d2d248d21abae9.mp3str"
+
+[deps]
+
+source_file="res://assets/sfxs/old-radio-button-click-97549 (1).mp3"
+dest_files=["res://.godot/imported/old-radio-button-click-97549 (1).mp3-748da0de3e2b7d9650d2d248d21abae9.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

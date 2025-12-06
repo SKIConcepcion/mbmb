@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bl6lnmo1k11wy"]
+
+[ext_resource type="Script" uid="uid://rexa11yohvml" path="res://scripts/house_key.gd" id="1_8tu47"]
+[ext_resource type="Texture2D" uid="uid://cajmhnmeqg8md" path="res://assets/images/house_key.png" id="2_lutsq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_13s5g"]
+radius = 35.08917
+
+[node name="HouseKey" type="Area2D"]
+scale = Vector2(0.4, 0.4)
+script = ExtResource("1_8tu47")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.9999998, 0.9999998)
+texture = ExtResource("2_lutsq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_13s5g")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

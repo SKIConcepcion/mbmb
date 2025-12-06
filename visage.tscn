@@ -1,0 +1,91 @@
+[gd_scene load_steps=10 format=3 uid="uid://cyupka6nbvqqy"]
+
+[ext_resource type="Script" uid="uid://ef426io3bjqh" path="res://scripts/visage.gd" id="1_ffmuk"]
+[ext_resource type="Texture2D" uid="uid://cw61t5nj6h0rb" path="res://assets/images/player/visage_01.png" id="2_vq5el"]
+[ext_resource type="Texture2D" uid="uid://c44qkk5ey15gq" path="res://assets/images/player/visage_02.png" id="3_voytn"]
+[ext_resource type="AudioStream" uid="uid://bm6onsn2cfsdk" path="res://assets/sfxs/organloop-6967.mp3" id="4_ffmuk"]
+[ext_resource type="AudioStream" uid="uid://n5j3fhmlgmfi" path="res://assets/sfxs/gear-friction-27676.mp3" id="5_ffmuk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3dm5n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vq5el")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_voytn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bsuac"]
+size = Vector2(288, 448)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7k104"]
+size = Vector2(368, 448)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q5887"]
+size = Vector2(832, 448)
+
+[node name="Visage" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_ffmuk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+sprite_frames = SubResource("SpriteFrames_3dm5n")
+autoplay = "default"
+frame_progress = 0.22727273
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
+position = Vector2(-32.000004, 0)
+shape = SubResource("RectangleShape2D_bsuac")
+
+[node name="Killzone" type="Area2D" parent="."]
+z_index = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(-24, 0)
+shape = SubResource("RectangleShape2D_7k104")
+
+[node name="TrackerZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrackerZone"]
+position = Vector2(-32.00003, 0)
+shape = SubResource("RectangleShape2D_q5887")
+
+[node name="CircusSfx" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-24, 0)
+stream = ExtResource("4_ffmuk")
+volume_db = 5.0
+pitch_scale = 0.8
+autoplay = true
+max_distance = 800.0
+
+[node name="ClockworkSfx" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-24, 0)
+stream = ExtResource("5_ffmuk")
+pitch_scale = 0.75
+autoplay = true
+max_distance = 1200.0
+
+[node name="Left" type="ColorRect" parent="."]
+offset_left = -104.0
+offset_top = -39.0
+offset_right = -24.0
+color = Color(0.90946156, 0.29848978, 0.26189122, 1)
+
+[node name="Right" type="ColorRect" parent="."]
+offset_left = -7.0
+offset_top = -10.0
+offset_right = 72.0
+offset_bottom = 27.0
+color = Color(0, 0, 0, 1)
+
+[connection signal="body_entered" from="Killzone" to="." method="_on_killzone_body_entered"]
+[connection signal="body_entered" from="TrackerZone" to="." method="_on_tracker_zone_body_entered"]
+[connection signal="body_exited" from="TrackerZone" to="." method="_on_tracker_zone_body_exited"]

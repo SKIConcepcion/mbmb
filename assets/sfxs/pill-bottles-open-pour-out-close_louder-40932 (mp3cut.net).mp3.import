@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://chd13ywhvtdv2"
+path="res://.godot/imported/pill-bottles-open-pour-out-close_louder-40932 (mp3cut.net).mp3-0614496983cafc7f1ad6523275a0d4b7.mp3str"
+
+[deps]
+
+source_file="res://assets/sfxs/pill-bottles-open-pour-out-close_louder-40932 (mp3cut.net).mp3"
+dest_files=["res://.godot/imported/pill-bottles-open-pour-out-close_louder-40932 (mp3cut.net).mp3-0614496983cafc7f1ad6523275a0d4b7.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://c07dshkkign7y"]
+
+[ext_resource type="Script" uid="uid://bq2cjyhln7wbx" path="res://scenes/screens/tutorial_screen.gd" id="1_e3hc4"]
+[ext_resource type="Texture2D" uid="uid://ddmkp2k6dcn3p" path="res://assets/images/tutorial_note.png" id="1_k4kyp"]
+[ext_resource type="Texture2D" uid="uid://ddby37iim5rmc" path="res://assets/images/buttons/right_btn.png" id="2_cbiel"]
+[ext_resource type="Texture2D" uid="uid://bgjku0lsod2t6" path="res://assets/images/buttons/right_btn_pressed.png" id="3_e3hc4"]
+
+[node name="TutorialScreen" type="CanvasLayer"]
+script = ExtResource("1_e3hc4")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(556, 313.6)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_k4kyp")
+
+[node name="NextButton" type="TextureButton" parent="."]
+offset_left = 1022.0
+offset_top = 517.0
+offset_right = 1112.0
+offset_bottom = 607.0
+texture_normal = ExtResource("2_cbiel")
+texture_pressed = ExtResource("3_e3hc4")
+
+[connection signal="pressed" from="NextButton" to="." method="_on_next_button_pressed"]

@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://fy88gyclg502"]
+
+[ext_resource type="FontFile" uid="uid://dm4qb644wjjgu" path="res://assets/quicksand.ttf" id="1_1idsm"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_te6rq"]
+
+[node name="ExpoScreen" type="CanvasLayer"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Day" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -512.0
+offset_top = -584.0
+offset_right = 512.0
+offset_bottom = -520.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.427451, 0.419608, 0.384314, 1)
+theme_override_fonts/font = ExtResource("1_1idsm")
+theme_override_font_sizes/font_size = 48
+text = "Monday"
+horizontal_alignment = 1
+
+[node name="Panel" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_te6rq")

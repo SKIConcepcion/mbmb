@@ -1,0 +1,100 @@
+[gd_scene load_steps=12 format=3 uid="uid://bqc60xbqyl3hv"]
+
+[ext_resource type="Texture2D" uid="uid://basuu0td3vyix" path="res://assets/images/player/herod_01.png" id="1_1pjtt"]
+[ext_resource type="Script" uid="uid://cswn4w7jkr02r" path="res://scripts/herod.gd" id="1_q5887"]
+[ext_resource type="Script" uid="uid://viv2er6o3ug0" path="res://scripts/film_grain.gd" id="2_bsuac"]
+[ext_resource type="Texture2D" uid="uid://c6m0xmsgqi8s" path="res://assets/images/player/herod_02.png" id="2_q5887"]
+[ext_resource type="AudioStream" uid="uid://bbedkfl35tw5i" path="res://assets/sfxs/tv-static-6411.mp3" id="5_nc8cc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7xaro"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1pjtt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_q5887")
+}],
+"loop": true,
+"name": &"default",
+"speed": 0.8
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bsuac"]
+size = Vector2(187.69234, 729.23083)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_3ud1y"]
+seed = 7
+frequency = 0.3
+metadata/_preview_in_3d_space_ = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_q5887"]
+noise = SubResource("FastNoiseLite_3ud1y")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7k104"]
+size = Vector2(246.15396, 730.7693)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q5887"]
+size = Vector2(2633.8462, 733.8462)
+
+[node name="Herod" type="CharacterBody2D"]
+position = Vector2(1, 0)
+scale = Vector2(0.65, 0.65)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_q5887")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+sprite_frames = SubResource("SpriteFrames_7xaro")
+autoplay = "default"
+frame_progress = 0.42743015
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
+position = Vector2(1.5384675, 21.538454)
+shape = SubResource("RectangleShape2D_bsuac")
+
+[node name="Static" type="TextureRect" parent="."]
+modulate = Color(0.5014065, 0.50140655, 0.50140643, 1)
+anchors_preset = -1
+anchor_left = -0.31309617
+anchor_top = -0.10125
+anchor_right = -0.31309617
+anchor_bottom = -0.10125
+offset_left = -13.846155
+offset_top = -347.69235
+offset_right = 27.692312
+offset_bottom = -313.8462
+texture = SubResource("NoiseTexture2D_q5887")
+expand_mode = 1
+script = ExtResource("2_bsuac")
+metadata/_edit_use_anchors_ = true
+
+[node name="Killzone" type="Area2D" parent="."]
+z_index = 1
+position = Vector2(319, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(-317.46164, 20.76922)
+shape = SubResource("RectangleShape2D_7k104")
+
+[node name="TrackerZone" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrackerZone"]
+position = Vector2(-3.076935, 0)
+shape = SubResource("RectangleShape2D_q5887")
+
+[node name="StaticSfx" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(533, -140)
+stream = ExtResource("5_nc8cc")
+volume_db = -5.0
+pitch_scale = 0.75
+autoplay = true
+max_distance = 1500.0
+
+[connection signal="body_entered" from="Killzone" to="." method="_on_killzone_body_entered"]
+[connection signal="body_exited" from="Killzone" to="." method="_on_killzone_body_exited"]
+[connection signal="body_entered" from="TrackerZone" to="." method="_on_tracker_zone_body_entered"]
+[connection signal="body_exited" from="TrackerZone" to="." method="_on_tracker_zone_body_exited"]

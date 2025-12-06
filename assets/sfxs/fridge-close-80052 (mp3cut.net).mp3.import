@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://upeokrnuwo7b"
+path="res://.godot/imported/fridge-close-80052 (mp3cut.net).mp3-80cdb1768592a9a7fe0c00a895e602a1.mp3str"
+
+[deps]
+
+source_file="res://assets/sfxs/fridge-close-80052 (mp3cut.net).mp3"
+dest_files=["res://.godot/imported/fridge-close-80052 (mp3cut.net).mp3-80cdb1768592a9a7fe0c00a895e602a1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bdbtcl43uk3mn"
+path="res://.godot/imported/stairs-slowly-27436-[Trimmed by Rev.com] (3).mp3-230ab645c1fbba54dca6fd206283dfa3.mp3str"
+
+[deps]
+
+source_file="res://assets/sfxs/stairs-slowly-27436-[Trimmed by Rev.com] (3).mp3"
+dest_files=["res://.godot/imported/stairs-slowly-27436-[Trimmed by Rev.com] (3).mp3-230ab645c1fbba54dca6fd206283dfa3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8rm04m2s6fkc"]
+
+[ext_resource type="Script" uid="uid://w1jbo5genqxw" path="res://scripts/day_screen.gd" id="1_0r4q5"]
+[ext_resource type="FontFile" uid="uid://dm4qb644wjjgu" path="res://assets/quicksand.ttf" id="2_vmy6f"]
+
+[node name="DayScreen" type="CanvasLayer"]
+script = ExtResource("1_0r4q5")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Day" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 1.1527778
+anchor_bottom = 0.5
+offset_left = -496.0
+offset_top = 188.0
+offset_right = -240.0
+offset_bottom = 248.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.427451, 0.419608, 0.384314, 1)
+theme_override_fonts/font = ExtResource("2_vmy6f")
+theme_override_font_sizes/font_size = 48
+text = "Monday"
+metadata/_edit_use_anchors_ = true
